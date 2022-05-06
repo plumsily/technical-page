@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Justin Lee" />
+    <meta name="title" content="FCC Technical Document Page" />
+    <link rel="stylesheet" href="main.css">
+    <title>Technical Document Page</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <main id="main-doc">
+        <div class="background-section">
+            <div class="navbar-section">
+            <nav id="navbar">
+                <header>
+                    <h1>MATLAB Basics</h1>
+                </header>
+                <a href="#introduction" class="nav-link">Introduction</a>
+                <a href="#matrices_and_arrays" class="nav-link">Matrices and Arrays</a>
+                <a href="#array_indexing" class="nav-link">Array Indexing</a>
+                <a href="#string_arrays" class="nav-link">String Arrays</a>
+                <a href="#2d_plots" class="nav-link">2D Plots</a>
+                <a href="#3d_plots" class="nav-link">3D Plots</a>
+                <a href="#loops" class="nav-link">Loops</a>
+                <a href="#conditional_statements" class="nav-link">Conditional Statements</a>
+            </nav>
+            </div>
+            <div class="section-container">
+                <section id="introduction" class="main-section">
+                    <header>
+                        <h2>Introduction</h2>
+                    </header>
+                    <p>Millions of engineers and scientists worldwide use MATLAB® to analyze and design the systems and products transforming our world. The matrix-based MATLAB language is the world’s most natural way to express computational mathematics.</p>
+                    <p>As a standalone desktop application, built-in graphics make it easy to visualize and gain insights from data. The desktop environment also invites experimentation, exploration, and discovery. These MATLAB tools and capabilities are all rigorously tested and designed to work together.</p>
+                </section>
+                <section id="matrices_and_arrays" class="main-section">
+                    <header>
+                        <h2>Matrices and Arrays</h2>
+                    </header>
+                    <p>MATLAB is an abbreviation for "matrix laboratory." While other programming languages mostly work with numbers one at a time, MATLAB® is designed to operate primarily on whole matrices and arrays. All MATLAB variables are multidimensional arrays, no matter what type of data. A matrix is a two-dimensional array often used for linear algebra.</p>
+                    <p>To create a matrix of only one row, referred to as an array, separate the elements with either a comma or space inside of square brackets.</p>
+                    <div class="code-container"> 
+                        <code>a = [1 2 3 4]</code>
+                    </div>  
+                    <p>To create a matrix of multiple rows,separate the rows with semicolons.</p>
+                    <div class="code-container"> 
+                        <code>a = [1 3 5; 2 4 6; 7 8 10]</code><br>
+                        <code class="code">
+ans = <em>3×3</em>
+
+     1     3     5
+     2     4     6
+     7     8    10</code>
+                        </div>
+                    <p>You can process all of the values in a matrix using a single arithmetic operator or function. For example:</p>
+                    <div class="code-container"> 
+                        <code>sin(a)</code><br>
+                        <code class="code">
+ans = <em>3×3</em>
+
+    0.8415    0.1411   -0.9589
+    0.9093   -0.7568   -0.2794
+    0.6570    0.9894   -0.5440</code>
+                    </div>  
+                    <p>You can also concatenate matrices or arrays by treating them as elements in a new array. For example:</p>
+                    <div class="code-container"> 
+                        <code>A = [a,a]</code><br>
+                        <code class="code">
+ans = <em>6×6</em>
+
+     1     3     5     1     3     5
+     2     4     6     2     4     6
+     7     8    10     7     8    10</code>
+                    </div> 
+                    <p>Other operations include:</p>
+                    <li>Transposing</li>
+                    <li>Inversion</li>
+                    <li>Element-wise multiplication</li>
+                    <li>Exponents</li>
+                    <li>Etc.</li>
+                </section>
+                <section id="array_indexing" class="main-section">
+                    <header>
+                        <h2>Array Indexing</h2>
+                    </header>
+                    <p>Every variable in MATLAB® is an array that can hold many numbers. When you want to access selected elements of an array, use indexing.  The most common way is to specify row and column subscripts, such as:</p>
+                    <div class="code-container"> 
+                        <code>A = [1 2 3 4; 5 6 7 8; 9 10 11 12; 13 14 15 16]</code><br>
+                        <code class="code">
+A = <em>4×4</em>
+
+     1     2     3     4
+     5     6     7     8
+     9    10    11    12
+    13    14    15    16
+
+A(4,2)
+
+ans = 14</code>
+</div>
+                    <p>To refer to multiple elements of an array, use the colon operator, which allows you to specify a range of the form start:end. For example, list the elements in the first three rows and the second column of A:</p>
+                    <div class="code-container"> 
+                        <code>A(1:3,2)</code><br>
+                        <code class="code">
+ans = <em>3×1</em>
+
+     2
+     6
+    10</code>
+                    </div> 
+                    <p>The colon alone, without start or end values, specifies all of the elements in that dimension. For example, select all the columns in the third row of A:</p>
+                    <div class="code-container"> 
+                        <code>A(3,:)</code><br>
+                        <code class="code">
+ans = <em>1×5</em>
+
+     9    10    11    12     0</code>
+                    </div> 
+                </section>
+                <section id="string_arrays" class="main-section">
+                    <header>
+                        <h2>String Arrays</h2>
+                    </header>
+                    <p>When you are working with text, enclose sequences of characters in double quotes. You can assign text to a variable.</p>
+                    <div class="code-container"> 
+                        <code>t = "Hello, world";</code>
+                    </div> 
+                    <p>To add text to the end of a string, use the plus operator, +.</p>
+                    <div class="code-container"> 
+                        <code class="code">f = 71;
+c = (f-32)/1.8;
+tempText = "Temperature is " + c + "C"
+
+tempText = 
+"Temperature is 21.6667C"</code>
+                    </div> 
+                    <p>Similar to numeric arrays, string arrays can have multiple elements. Use the <code>strlength</code> function to find the length of each string within an array.</p>
+                    <div class="code-container"> 
+                        <code class="code">A = ["a","bb","ccc"; "dddd","eeeeee","fffffff"]
+
+A = 
+  2×3 string array
+    "a"       "bb"        "ccc"    
+    "dddd"    "eeeeee"    "fffffff"
+
+strlength(A)
+
+ans =
+
+     1     2     3
+     4     6     7</code>
+                    </div> 
+                </section>
+                <section id="2d_plots" class="main-section">
+                    <header>
+                        <h2>2D Plots</h2>
+                    </header>
+                    <p>To create two-dimensional line plots, use the <code>plot</code> function. For example, plot the sine function over a linearly spaced vector of values from 0 to 2π:</p>
+                    <div class="code-container"> 
+                        <code class="code">x = linspace(0,2*pi);
+y = sin(x);
+plot(x,y)</code>
+                    </div>  
+                    <img src="https://www.mathworks.com/help/examples/matlab/win64/GS2DAnd3DPlotsExample_01.png" alt="2d-plot">
+                    <p>You can label the axes and add a title.</p>
+                    <div class="code-container"> 
+                        <code class="code">xlabel("x")
+ylabel("sin(x)")
+title("Plot of the Sine Function")</code>
+                    </div>  
+                    <img src="https://www.mathworks.com/help/examples/matlab/win64/GS2DAnd3DPlotsExample_02.png" alt="2d plot with title">
+                </section>
+                <section id="3d_plots" class="main-section">
+                    <header>
+                        <h2>3D Plots</h2>
+                    </header>
+                    <p>Three-dimensional plots typically display a surface defined by a function in two variables. For instance, calculate \(z=xe^{-x^2-y^2}\) given row and column vectors x and y with 20 points each in the range [-2,2].</p>
+                    <div class="code-container"> 
+                        <code class="code">x = linspace(-2,2,20);
+y = x';
+z = x .* exp(-x.^2 - y.^2);</code>
+                        </div>
+                    <p>Then, create a surface plot.</p>
+                    <div class="code-container"> 
+                        <code class="code">surf(x,y,z)</code>
+                    </div>  
+                    <img src="https://www.mathworks.com/help/examples/matlab/win64/GS2DAnd3DPlotsExample_05.png" alt="3d plot">
+                </section>
+                <section id="loops" class="main-section">
+                    <header>
+                        <h2>Loops</h2>
+                    </header>
+                    <p>Within any script, you can define sections of code that either repeat in a loop or conditionally execute. Loops use a <code>for</code> or <code>while</code> keyword, and conditional statements use <code>if</code> or <code>switch</code>.</p>
+                    <p>Loops are useful for creating sequences. For example, create a script named <code>fibseq</code> that uses a <code>for</code> loop to calculate the first 100 numbers of the Fibonacci sequence. In this sequence, the first two numbers are 1, and each subsequent number is the sum of the previous two, \(F_{n} = F_{n-1} + F_{n-2}\).</p>
+                    <div class="code-container"> 
+                        <code class="code">N = 100;
+f(1) = 1;
+f(2) = 1;
+
+for n = 3:N
+    f(n) = f(n-1) + f(n-2);
+end
+f(1:10)</code>
+                    </div>
+                    <p>When you run the script, the <code>for</code> statement defines a counter named <code>n</code> that starts at 3. Then, the loop repeatedly assigns to <code>f(n)</code>, incrementing <code>n</code> on each execution until it reaches 100. The last command in the script, <code>f(1:10)</code>, displays the first 10 elements of <code>f</code>.</p>
+                    <div class="code-container"> 
+                        <code class="code">ans =
+     1     1     2     3     5     8    13    21    34    55 </code>
+                    </div>
+                </section>
+                <section id="conditional_statements" class="main-section">
+                    <header>
+                        <h2>Conditional Statements</h2>
+                    </header>
+                    <p>Conditional statements execute only when given expressions are true. For example, assign a value to a variable depending on the size of a random number: 'low', 'medium', or 'high'. In this case, the random number is an integer between 1 and 100.</p>
+                    
+                    <div class="code-container"> 
+                        <code class="code">num = randi(100)
+if num < 34
+   sz = 'low'
+elseif num < 67
+   sz = 'medium'
+else
+   sz = 'high'
+end</code>
+                    </div>  
+                <p>The statement sz = 'high' only executes when num is greater than or equal to 67.</p>
+                </section>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
